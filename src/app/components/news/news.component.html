@@ -1,1 +1,40 @@
-<p>news works!</p>
+<div class="news-container" *ngIf="newsList.length>0">
+    <ul>
+        <!-- could use for sliding up.. -->
+      <!-- <li *ngFor="let item of newsList | slice:sliceIndex">
+        <div class="news">
+          <div class="image">
+            <img src="{{item.urlToImage}}"/>
+          </div>
+          <div class="info">
+            <h3>{{item.title}}</h3>
+            <p>
+              <small>{{item.author}}</small>
+            </p>
+            <p>{{item.description}}</p>
+          </div>
+        </div>
+      </li> -->
+      <li>
+        <div [ngClass]="getClass()">
+        <div class="image">
+            <img src="{{newsList[sliceIndex].urlToImage}}"/>
+        </div>
+        <div class="info">
+            <h3>{{newsList[sliceIndex].title}}</h3>
+            <p>{{newsList[sliceIndex].description}}</p>
+            <p class="footer">
+                <span>
+                    {{newsList[sliceIndex].publishedAt | date}}
+                </span>
+                <small>
+                    <i>
+                        {{newsList[sliceIndex].author}}
+                    </i>
+                </small>
+            </p>
+        </div>
+        </div>
+      </li>
+    </ul>
+</div>

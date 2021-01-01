@@ -1,1 +1,11 @@
-<p>motivational works!</p>
+<div *ngIf="messages.length>0">
+    <div [ngSwitch]="messages[index].type">
+        <div *ngSwitchCase="0">
+            <h2><i>"{{messages[index].text }}"</i></h2>
+            <p>{{messages[index].author }}</p>
+        </div>
+        <div *ngSwitchDefault>
+            <h2>{{messages[index].text }}</h2>
+        </div>
+    </div>
+</div>
