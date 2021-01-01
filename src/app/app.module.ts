@@ -9,6 +9,7 @@ import { NewsComponent } from './components/news/news.component';
 import { CardComponent } from './components/card/card.component';
 import { EventsComponent } from './components/events/events.component';
 import { WeatherComponent } from './components/weather/weather.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { WeatherComponent } from './components/weather/weather.component';
     WeatherComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
