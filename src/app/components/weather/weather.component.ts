@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AccuWeatherForcast } from './forecast.model';
+import { WeatherService } from "./weather.service";
 
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
-  styleUrls: ['./weather.component.css']
+  styleUrls: ['./weather.component.css'],
 })
-export class WeatherComponent implements OnInit {
+export class WeatherComponent {
 
-  constructor() { }
+  constructor(private WeatherService: WeatherService) { }
 
-  ngOnInit(): void {
-  }
+  forecast: Observable<AccuWeatherForcast> = this.WeatherService.get5DaysForecasts();
 
 }

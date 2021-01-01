@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { TimeComponent } from './components/time/time.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
@@ -9,6 +11,7 @@ import { NewsComponent } from './components/news/news.component';
 import { CardComponent } from './components/card/card.component';
 import { EventsComponent } from './components/events/events.component';
 import { WeatherComponent } from './components/weather/weather.component';
+import { WeatherService } from './components/weather/weather.service';
 
 @NgModule({
   declarations: [
@@ -22,9 +25,10 @@ import { WeatherComponent } from './components/weather/weather.component';
     WeatherComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [WeatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
