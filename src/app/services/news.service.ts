@@ -16,7 +16,7 @@ export class NewsService {
   }
   public getEverything(country: string, query: string) {
     return this.http.get(
-      `http://newsapi.org/v2/top-headlines??country=${country}&q=${query}&apiKey=${this.apiKey}`
+      `http://newsapi.org/v2/top-headlines?country=${country}&q=${query}&apiKey=${this.apiKey}`
     );
   }
 }
