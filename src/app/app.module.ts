@@ -23,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     WeatherComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
   ],
   providers: [],
