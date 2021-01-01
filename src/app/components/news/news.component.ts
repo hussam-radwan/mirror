@@ -22,30 +22,47 @@ interface NewsItem {
 })
 export class NewsComponent implements OnInit {
   newsList: Array<NewsItem> = [];
-  sliceIndex:number =0;
+  sliceIndex: number = 0;
 
   constructor(newsApi: NewsService) {
     newsApi.getTopHeadlines('us').subscribe((response: any) => {
       if (response.status === 'ok') this.newsList = response.articles;
     });
-    // newsApi.getEverything('','bbc').subscribe((response: any) => {
+    // newsApi.getTopHeadlines('eg').subscribe((response: any) => {
+    //   if (response.status === 'ok') this.newsList = response.articles;
+    // });
+    // newsApi.getEverything('','bbc arabic').subscribe((response: any) => {
+    //   if (response.status === 'ok') this.newsList = response.articles;
+    // });
+    // newsApi.getEverything('','rt arabic').subscribe((response: any) => {
     //   if (response.status === 'ok') this.newsList = response.articles;
     // });
   }
 
   ngOnInit(): void {
-    this.changeMessageAfter(30)
+    this.changeMessageAfter(30);
   }
 
+  changeMessageAfter(seconds: number) {
+    setTimeout(() => {
+      this.sliceIndex++;
+      if (this.sliceIndex == this.newsList.length) {
+        this.sliceIndex = 0;
+      } 
+      this.changeMessageAfter(seconds);
+    }, 1000 * seconds);
+  }
 
-  changeMessageAfter(seconds:number){
-    setTimeout(()=>{
-      if(this.sliceIndex==this.newsList.length){
-        this.sliceIndex=0
+  getClass() {
+    if(this.newsList.length>0){
+      
+      let hasArabic = this.newsList[this.sliceIndex].title.match(/[\u0621-\u064A]+/g)
+      if(hasArabic){
+        return "news ar";
       }else{
-        this.sliceIndex++;
+        return "news";
       }
-      this.changeMessageAfter(seconds)
-    },1000*seconds)
+    }
+    return  'news';
   }
 }

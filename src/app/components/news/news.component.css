@@ -22,11 +22,19 @@ li{
     margin-bottom: 20px;
 }
 
+.news.ar{
+    text-align: right;
+}
+
 .news .info{
     margin-left:20px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+}
+.news.ar .info{
+    margin-left:0px;
+    margin-right:20px;
 }
 
 .news h3{
