@@ -9,6 +9,6 @@ export class QuotesService {
   constructor(private http: HttpClient) { }
 
   public getQuotes(){
-    return this.http.get('https://type.fit/api/quotes')
+    return this.http.get('/api/quotes')
   }
 }
