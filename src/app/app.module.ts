@@ -25,7 +25,7 @@ import { WeatherService } from './components/weather/weather.service';
     WeatherComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
   ],
   providers: [WeatherService],
