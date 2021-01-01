@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class NewsService {
-  apiKey: string = '5ef869099e3841aabd3d598016157b6e';
 
   constructor(private http: HttpClient) {}
 

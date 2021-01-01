@@ -1,22 +1,19 @@
-import { Request, Response, NextFunction, Router } from 'express';
+import { Request, Response, Router } from 'express';
 import axios from 'axios';
+import config from './config';
 
 let router: Router = Router();
-
-let apiKeys: any = {
-  newsApiKey: '5ef869099e3841aabd3d598016157b6e',
-};
 
 router.get('/news/everything', (req: Request, res: Response) => {
   axios({
     method: 'GET',
-    url: 'http://newsapi.org/v2/everything',
+    url: `${config.news.endpoint}/everything`,
     headers: {
       Accept: 'application/json',
     },
     params: {
       ...req.query,
-      apiKey: apiKeys.newsApiKey,
+      apiKey: config.news.apiKey,
     },
   })
     .then(function (response) {
@@ -30,13 +27,13 @@ router.get('/news/everything', (req: Request, res: Response) => {
 router.get('/news/top-headlines', (req: Request, res: Response) => {
   axios({
     method: 'GET',
-    url: 'http://newsapi.org/v2/top-headlines',
+    url: `${config.news.endpoint}/top-headlines`,
     headers: {
       Accept: 'application/json',
     },
     params: {
       ...req.query,
-      apiKey: apiKeys.newsApiKey,
+      apiKey: config.news.apiKey,
     },
   })
     .then(function (response) {
@@ -50,7 +47,7 @@ router.get('/news/top-headlines', (req: Request, res: Response) => {
 router.get('/quotes', (req: Request, res: Response) => {
   axios({
     method: 'GET',
-    url: 'https://type.fit/api/quotes',
+    url: config.quotes.endpoint,
     headers: {
       Accept: 'application/json',
     },
