@@ -34,7 +34,7 @@ export class NewsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.changeMessageAfter(5)
+    this.changeMessageAfter(30)
   }
 
 
