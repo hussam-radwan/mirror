@@ -47,7 +47,7 @@ export class MotivationalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.changeMessageAfter(5)
+    this.changeMessageAfter(30)
   }
 
   changeMessageAfter(seconds:number){
