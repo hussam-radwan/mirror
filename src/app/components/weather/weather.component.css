@@ -1,0 +1,33 @@
+.info{
+  -webkit-box-pack: normal;
+  -ms-flex-pack: normal;
+  justify-content: normal;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.card{
+  margin-bottom: 20px;
+}
+
+.dates{
+  margin-right: 10px;
+}
+
+.dates h5{
+  margin: 10px 0px;
+}
+
+.high{
+  font-size: 26px;
+}
+
+.low{
+  font-size: 20px;
+  color: #d1d1d1;
+}

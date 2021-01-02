@@ -1,1 +1,22 @@
-<p>weather works!</p>
+<div *ngIf="forecast|async as forecast">
+  <div *ngFor="let dailyForecast of forecast.DailyForecasts" class="card">
+    <div class="info">
+      <div class="dates">
+        <h5>{{dailyForecast.Date | date:'E'}}</h5>
+        <h5>{{dailyForecast.Date | date:'dd/MM'}}</h5>
+      </div>
+
+      <div class="img-holder">
+        <img alt="" class="weather-icon icon" src="assets/images/{{dailyForecast.Day.Icon}}.png">
+      </div>
+
+      <div class="temp">
+        <span class="high">{{dailyForecast.Temperature.Maximum.Value}}°</span>
+        <span class="low">/{{dailyForecast.Temperature.Minimum.Value}}°</span>
+      </div>
+    </div>
+    <div class="phrase">
+      {{dailyForecast.Day.IconPhrase}}
+    </div>
+  </div>
+</div>

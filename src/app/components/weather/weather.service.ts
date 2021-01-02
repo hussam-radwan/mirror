@@ -5,7 +5,9 @@ import { Observable } from 'rxjs';
 import { AccuWeatherForcast } from './forecast.model';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class WeatherService {
 
   constructor(
@@ -13,13 +15,11 @@ export class WeatherService {
   ) { }
 
   get5DaysForecasts(): Observable<AccuWeatherForcast> {
-    const url: string = 'http://dataservice.accuweather.com/forecasts/v1/daily/1day/';
-    const cityCode: number = 127164; //Cairo
-    const apiKey: string = 'DmdJd2c6yoLByRzWCiwiiLZGwa2neo2G';
+    const url: string = '/api/wather/forcast5days';
 
     let params = new HttpParams();
-    params = params.append('apikey', apiKey);
+    params = params.append('metric', 'true')
 
-    return this.http.get<AccuWeatherForcast>(url + cityCode, { params })
+    return this.http.get<AccuWeatherForcast>(url, { params })
   }
 }

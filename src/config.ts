@@ -9,6 +9,10 @@ const config: any = {
   quotes: {
     endpoint: process.env.QUOTES_ENDPOINT,
   },
+  weather:{
+    endpoint: process.env.WEATHER_ENDPOINT,
+    apiKey: process.env.WEATHER_API_KEY
+  }
 };
 
 export default config;

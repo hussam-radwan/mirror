@@ -4,6 +4,7 @@ import config from './config';
 
 let router: Router = Router();
 
+
 router.get('/news/everything', (req: Request, res: Response) => {
   axios({
     method: 'GET',
@@ -14,6 +15,26 @@ router.get('/news/everything', (req: Request, res: Response) => {
     params: {
       ...req.query,
       apiKey: config.news.apiKey,
+    },
+  })
+    .then(function (response) {
+      res.status(200).json(response.data);
+    })
+    .catch(function (error) {
+      res.status(500).json(error);
+    });
+});
+
+router.get('/wather/forcast5days', (req: Request, res: Response) => {
+  axios({
+    method: 'GET',
+    url: `${config.weather.endpoint}/127164`,
+    headers: {
+      Accept: 'application/json',
+    },
+    params: {
+      ...req.query,
+      apikey: config.weather.apiKey,
     },
   })
     .then(function (response) {
