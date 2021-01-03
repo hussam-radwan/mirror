@@ -13,15 +13,9 @@ export class WeatherComponent {
 
   constructor(private WeatherService: WeatherService) { }
 
-  forecast: Observable<AccuWeatherForcast> = timer(0,30*1000).pipe(
+  forecast: Observable<AccuWeatherForcast> = timer(0,60*60*1000).pipe(
     switchMap(()=> this.WeatherService.get5DaysForecasts()),
     retry(2)
   );
-
-  // of({}).pipe(
-  //   mergeMap(() => this.WeatherService.get5DaysForecasts()),
-  //   delay(60*1000),
-  //   repeat()
-  //   );
 
 }
