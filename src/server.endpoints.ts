@@ -1,6 +1,8 @@
 import { Request, Response, Router } from 'express';
 import axios from 'axios';
 import config from './config';
+import {cpus,totalmem,freemem} from 'os';
+import os from 'os-utils'
 
 let router: Router = Router();
 
@@ -100,5 +102,18 @@ router.get('/quotes', (req: Request, res: Response) => {
       res.status(500).json(error);
     });
 });
+
+router.get('/system-stats',(req: Request, res: Response)=>{
+  os.cpuUsage((usage:any)=>{
+    res.status(200).json({
+      cpu:usage,
+      freeMem:os.freemem(),
+      totalMem:os.totalmem(),
+      usedMemPercX:1-(os.freemem()/os.totalmem()),
+      freeMemPerc:os.freememPercentage(),
+      load:os.loadavg(5)
+    })
+  })
+})
 
 export default router;
