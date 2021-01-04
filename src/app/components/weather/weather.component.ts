@@ -18,4 +18,9 @@ export class WeatherComponent {
     retry(2)
   );
 
+  hourly: Observable<AccuWeatherForcast> = timer(0,60*60*1000).pipe(
+    switchMap(()=> this.WeatherService.getHourly()),
+    retry(2)
+  );
+
 }

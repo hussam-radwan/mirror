@@ -15,7 +15,16 @@ export class WeatherService {
   ) { }
 
   get5DaysForecasts(): Observable<AccuWeatherForcast> {
-    const url: string = '/api/wather/forcast5days';
+    const url: string = '/api/weather/forcast5days';
+
+    let params = new HttpParams();
+    params = params.append('metric', 'true')
+
+    return this.http.get<AccuWeatherForcast>(url, { params })
+  }
+
+  getHourly(): Observable<AccuWeatherForcast> {
+    const url: string = '/api/weather/hourly';
 
     let params = new HttpParams();
     params = params.append('metric', 'true')

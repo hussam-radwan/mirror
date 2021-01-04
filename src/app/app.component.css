@@ -3,7 +3,7 @@
   .container {
       
     display: grid;
-    grid-template-columns: 200px auto 200px;
+    grid-template-columns: 200px auto 250px;
     width: 95vw;
     height: 95vh;
     margin: auto;
@@ -29,7 +29,7 @@
   .right{
       grid-area: "right";
       align-items: flex-end;
-      width: 200px;
+      width: 250px;
       height: 100%;
   }
   .bottom{
