@@ -12,6 +12,7 @@ import { CardComponent } from './components/card/card.component';
 import { EventsComponent } from './components/events/events.component';
 import { WeatherComponent } from './components/weather/weather.component';
 import { WeatherService } from './components/weather/weather.service';
+import { StatsComponent } from './components/stats/stats.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { WeatherService } from './components/weather/weather.service';
     NewsComponent,
     CardComponent,
     EventsComponent,
-    WeatherComponent
+    WeatherComponent,
+    StatsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
