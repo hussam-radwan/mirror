@@ -9,21 +9,8 @@ import { StatsService } from 'src/app/services/stats.service';
 })
 export class StatsComponent implements OnInit {
   options:any={
-    animation: {
-      animateScale: true,
-      animateRotate: true,
-    },
-    layout: {
-      padding: {
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
-      },
-    },
-    legend:{
-      display:false
-    },
+    cutoutPercentage: 90,
+    responsive: true,
   }
 
   data:any={
@@ -40,9 +27,9 @@ export class StatsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cpuDoughnut=this.createDoughnut('cpu',this.data.cpu)
-    this.memoryDoughnut=this.createDoughnut('memory',this.data.mem);
-    this.loadDoughnut=this.createDoughnut('load',this.data.load);
+    this.cpuDoughnut=this.createDoughnut('cpu',this.data.cpu,'#1abc9c')
+    this.memoryDoughnut=this.createDoughnut('memory',this.data.mem,'#3498db');
+    this.loadDoughnut=this.createDoughnut('load',this.data.load,'#9b59b6');
     this.getUpdates()
   }
 
@@ -74,19 +61,22 @@ export class StatsComponent implements OnInit {
     })
   }
 
-  createDoughnut(id:string,perc:number){
+  createDoughnut(id:string,perc:number,color:string){
     return new Chart(id, {
       type: 'doughnut',
       data: {
         datasets: [
           {
             data: [perc, 100-perc],
-            backgroundColor: ['#2980b9','#2c3e50'],
+            backgroundColor: [color,'#2c3e50'],
             borderColor:['rgba(0,0,0,0)','rgba(0,0,0,0)']
           },
         ],
-        options:this.options
       },
+      options:{
+        cutoutPercentage: 80,
+        responsive: true,
+      }
       
     });
   }
