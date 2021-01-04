@@ -25,10 +25,30 @@ router.get('/news/everything', (req: Request, res: Response) => {
     });
 });
 
-router.get('/wather/forcast5days', (req: Request, res: Response) => {
+router.get('/weather/forcast5days', (req: Request, res: Response) => {
   axios({
     method: 'GET',
-    url: `${config.weather.endpoint}/127164`,
+    url: `${config.weather.endpoint}/daily/5day/127164`,
+    headers: {
+      Accept: 'application/json',
+    },
+    params: {
+      ...req.query,
+      apikey: config.weather.apiKey,
+    },
+  })
+    .then(function (response) {
+      res.status(200).json(response.data);
+    })
+    .catch(function (error) {
+      res.status(500).json(error);
+    });
+});
+
+router.get('/weather/hourly', (req: Request, res: Response) => {
+  axios({
+    method: 'GET',
+    url: `${config.weather.endpoint}/hourly/12hour/127164`,
     headers: {
       Accept: 'application/json',
     },
