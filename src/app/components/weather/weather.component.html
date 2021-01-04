@@ -20,3 +20,24 @@
     </div>
   </div>
 </div>
+
+<div *ngIf="hourly|async as hourly">
+  <div *ngFor="let hour of hourly" class="card">
+    <div class="info">
+      <div class="dates">
+        <h5>{{hour.DateTime | date:'hh:mm a'}}</h5>
+      </div>
+
+      <div class="img-holder">
+        <img alt="" class="weather-icon icon" src="assets/images/{{hour.WeatherIcon}}.png">
+      </div>
+
+      <div class="temp">
+        <span class="high">{{hour.Temperature.Value}}°</span>
+      </div>
+    </div>
+    <div class="phrase">
+      {{hour.IconPhrase}}
+    </div>
+  </div>
+</div>
