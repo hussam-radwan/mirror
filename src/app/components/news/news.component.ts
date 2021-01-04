@@ -25,12 +25,12 @@ export class NewsComponent implements OnInit {
   sliceIndex: number = 0;
 
   constructor(newsApi: NewsService) {
-    newsApi.getTopHeadlines('us').subscribe((response: any) => {
-      if (response.status === 'ok') this.newsList = response.articles;
-    });
-    // newsApi.getTopHeadlines('eg').subscribe((response: any) => {
+    // newsApi.getTopHeadlines('us').subscribe((response: any) => {
     //   if (response.status === 'ok') this.newsList = response.articles;
     // });
+    newsApi.getTopHeadlines('eg').subscribe((response: any) => {
+      if (response.status === 'ok') this.newsList = response.articles;
+    });
     // newsApi.getEverything('','bbc arabic').subscribe((response: any) => {
     //   if (response.status === 'ok') this.newsList = response.articles;
     // });
